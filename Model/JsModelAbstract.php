@@ -2,6 +2,8 @@
 
 namespace Fp\JsFormValidatorBundle\Model;
 
+use Symfony\Component\Validator\Constraints\File;
+
 /**
  * All the models inherited from this class converted to a similar Javascript model by printing them as a string
  *
@@ -49,6 +51,11 @@ abstract class JsModelAbstract
         // For an object or associative array
         elseif (is_object($value) || (is_array($value) && array_values($value) !== $value)) {
             $jsObject = array();
+            
+            if ($value instanceof File && $value->maxSize) {
+                $jsObject[] = "'maxSize':" . self::phpValueToJs($value->maxSize);
+            }
+            
             foreach ($value as $paramName => $paramValue) {
                 $paramName = addcslashes($paramName, '\'\\');
                 $jsObject[] = "'$paramName':" . self::phpValueToJs($paramValue);
