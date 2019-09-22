@@ -305,7 +305,7 @@ function FpJsCustomizeMethods() {
             var prototype = FpJsFormValidator.preparePrototype(
                 FpJsFormValidator.cloneObject(item.jsFormValidator.prototype),
                 name,
-                item.jsFormValidator.id + '_' + name
+                name
             );
             item.jsFormValidator.children[name] = FpJsFormValidator.createElement(prototype);
             item.jsFormValidator.children[name].parent = item.jsFormValidator;
