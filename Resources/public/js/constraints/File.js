@@ -31,9 +31,7 @@ function SymfonyComponentValidatorConstraintsFile() {
 
     this.checkMimeType = function (mimeType) {
         return (
-            typeof(this.mimeTypes) === 'object'
-            && this.mimeTypes.length > 0
-            && this.mimeTypes.indexOf(mimeType) < 0
+            this.mimeTypes.indexOf(mimeType) < 0
         );
     };
 
